@@ -1,22 +1,21 @@
 <?php 
 
-require_once("vendor/autoload.php");
+require_once("vendor/autoload.php"); //carrega todas as dependencias do site
 
-$app = new \Slim\Slim();
+use \Slim\Slim; //chama a classe Slim 
+use \Hcode\Page; //chama da classe Page
+
+$app = new Slim(); //instanciando a classe slim
 
 $app->config('debug', true);
 
 $app->get('/', function() {
 
-	$sql = new Hcode\DB\Sql();
+	$page = new Page();
 
-        $results = $sql->select("SELECT * FROM tb_products");
-
-        echo json_encode($results);
-
-
+	$page->setTpl("index"); //chamando o conteudo da pagina
 });
 
-$app->run();
+$app->run(); //roda todo o codigo depois de ter carregado tudo
 
  ?>
