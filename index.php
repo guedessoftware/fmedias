@@ -44,14 +44,14 @@ $app->post('/admin/login', function() {
 
 	User::login($_POST["login"], $_POST["password"]);
 	
-	header("location: /admin");
+	header("Location: /admin");
 
 	exit;
 });
 
-$app->get('/admin/logout', function(){
+$app->get('/admin/logOut', function(){
 
-	User::logout();
+	User::logOut();
 
 	header("Location: /admin/login");
 

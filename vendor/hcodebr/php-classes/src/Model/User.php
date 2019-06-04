@@ -30,8 +30,8 @@ class User extends Model {
 			$user = new User();
 
 			$user->setData($data); // função pertensente a classe Model.php
-			
-			$_SESSION[User::SESSION]=$user->getValues();
+
+			$_SESSION[User::SESSION] = $user->getValues();
 
 			return $user;
 
@@ -52,10 +52,14 @@ class User extends Model {
 		){
 			header("Location: /admin/login"); //redimensiona se nao estiver logado...
 
-			//var_dump(User::SESSION);
-
 			exit;
 		}
+	}
+	public static function logOut(){
+
+		session_destroy();
+
+		header("Location: /admin/login");
 	}
 }
 
